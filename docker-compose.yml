@@ -1,0 +1,15 @@
+version: "3"
+services:
+  py:
+    build: .
+    volumes:
+      - "./:/python"
+    stdin_open: true
+    tty: true
+    # command: "pip install -r requirements.txt"
+    links:
+      - redis
+  redis:
+    image: redis:6.0
+    volumes:
+      - "./docker_server/redis/data:/data"
